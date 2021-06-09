@@ -3,7 +3,11 @@ import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import './Navigation.css';
 
-function ProfileButton({ user }) {
+interface Props {
+    user: any;
+  }
+
+function ProfileButton({ user }: Props) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
 
@@ -24,7 +28,7 @@ function ProfileButton({ user }) {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
-  const logout = (e) => {
+  const logout = (e: any) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
   };

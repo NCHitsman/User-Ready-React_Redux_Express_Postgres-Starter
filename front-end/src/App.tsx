@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { Route, Switch } from "react-router-dom";
-import SignupFormPage from "./components/SignupFormPage";
-import * as sessionActions from "./store/session";
+import React, {useState, useEffect} from 'react';
 import Navigation from "./components/Navigation";
+import { Route, Switch } from "react-router-dom";
+import * as sessionActions from "./store/session";
+import SignupFormPage from "./components/SignupFormPage";
 import Home from './components/Home'
+import { useAppDispatch } from './store/index'
 
 function App() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {

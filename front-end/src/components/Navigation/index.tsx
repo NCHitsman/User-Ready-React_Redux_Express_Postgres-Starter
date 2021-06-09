@@ -5,8 +5,12 @@ import ProfileButton from './ProfileButton';
 import LoginFormPage from '../LoginFormPage';
 import './Navigation.css';
 
-function Navigation({ isLoaded }){
-  const sessionUser = useSelector(state => state.session.user);
+interface Props {
+    isLoaded: boolean;
+  }
+
+function Navigation({ isLoaded }: Props){
+  const sessionUser: any = useSelector((state: any) => state.session.user);
 
   let sessionLinks;
   if (sessionUser) {

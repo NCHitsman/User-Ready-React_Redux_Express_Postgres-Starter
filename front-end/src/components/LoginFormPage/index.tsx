@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { useAppDispatch } from '../../store/index'
 
 function LoginFormPage() {
-  const dispatch = useDispatch();
-  const sessionUser = useSelector(state => state.session.user);
+  const dispatch = useAppDispatch();
+  const sessionUser = useSelector((state: any) => state.session.user);
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
@@ -14,11 +15,11 @@ function LoginFormPage() {
     <Redirect to="/" />
   );
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     setErrors([]);
     return dispatch(sessionActions.login({ credential, password }))
-      .catch(async (res) => {
+      .catch(async (res: any) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
       });
